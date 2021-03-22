@@ -1,0 +1,427 @@
+/* ==UserStyle==
+
+@name           fix-canvas
+@namespace      github.com/benjavicente/fix-canvas
+@version        0.1.1
+@description    Estilo para Canvas de Instructure
+@author         benjavicente
+@homepageURL    https://github.com/benjavicente/fix-canvas
+@updateURL      https://raw.githubusercontent.com/benjavicente/fix-canvas/main/styles/main.user.css
+@license        MIT
+@preprocessor   less
+
+@var color tono_principal "Tono principal" #085463
+
+==/UserStyle== */
+
+// Ver
+// https://github.com/openstyles/stylus/wiki/UserCSS-authors#creating
+// http://lesscss.org/
+
+// TODO
+// Mejor manejo de colores
+// Más variables para editar el estilo en la extensión
+// Eliminar fondos blancos
+// Manejar iframes (permitir tener fondo de otro color)
+// Manejar el layout vertical
+// Menu de la derecha _scroleable_ si es que supera todo su tamaño
+// Adaptar para tema oscuro
+// Editar el tablero para que sea consistente con el resto de los menús
+
+@-moz-document domain("canvas.uc.cl") {
+  // @color_principal: @tono_principal;
+  @color_principal: hsl(hue(@tono_principal), 85%, 21%);
+
+  // Variables auxiliarres
+  @fondo_oscuro: desaturate(lighten(@color_principal, 350%, relative), 50%, relative);
+
+  // Aplicación del tema
+  @barra_lateral_fondo: @color_principal;
+  @barra_lateral_logo_fondo: @color_principal;
+  @barra_lateral_opciones_fondo: @color_principal;
+  @barra_lateral_opciones_texto: lighten(@color_principal, 50%);
+  @barra_lateral_opciones_iconos: lighten(@color_principal, 80%);
+  @barra_lateral_opciones_fondo_hover: lighten(@color_principal, 5%);
+  @barra_lateral_opciones_texto_hover: #fff;
+  @barra_lateral_opciones_iconos_hover: #fff;
+  @barra_lateral_opc_activa_fondo: @fondo_oscuro;
+  @barra_lateral_opc_activa_icono: @color_principal;
+  @barra_lateral_opc_activa_texto: @color_principal;
+  @barra_lateral_circulo_perfil: #fff;
+  @barra_lateral_etiquetas_texto: #fff;
+  @barra_lateral_etiquetas_fondo: darken(@color_principal, 15%);
+
+  @catalogo_cursos_fondo: @fondo_oscuro;
+
+  @botones_fondo: @color_principal;
+  @botones_fondo_hover: lighten(@color_principal, 10%);
+  @botones_color: #fff;
+  @botones_color_hover: #fff;
+
+  @menu_izquierda_fondo: @fondo_oscuro;
+  @menu_derecha_fondo: @fondo_oscuro;
+
+  @titulo_fondo: darken(@fondo_oscuro, 15%);
+
+  @link_1: @color_principal;
+  @link_1_hover: lighten(@color_principal, 20%);
+
+  @titulo_grupo_fondo: @fondo_oscuro;
+
+  @scroll_bar: darken(@fondo_oscuro, 15%);
+  @scroll_bar_thumb: darken(@color_principal, 5%);
+
+  // TODO
+  @cuestionario_pregunta_correcta: #e2ffe2;
+  @notificacion: lighten(@color_principal, 15%);
+  @selecionado: @fondo_oscuro;
+
+  // -----------------------
+  //  Aplicación del estilo
+  // -----------------------
+  :root {
+    --ic-brand-global-nav-bgd: @barra_lateral_fondo;
+    --ic-brand-global-nav-logo-bgd: @barra_lateral_logo_fondo;
+    --ic-brand-global-nav-ic-icon-svg-fill: @barra_lateral_opciones_iconos;
+    --ic-brand-global-nav-ic-icon-svg-fill--active: @barra_lateral_opc_activa_icono;
+    --ic-brand-global-nav-avatar-border: @barra_lateral_circulo_perfil;
+    --ic-link-color: @link_1;
+    --ic-link-color-darkened-10: @link_1_hover;
+    --fbyHH-focusOutlineColor: @color_principal;
+    --ic-brand-primary: @notificacion;
+  }
+
+  .fLzZc_caGd .navigation-tray-container {
+    background: @catalogo_cursos_fondo;
+  }
+
+  .ic-app-header__menu-list-link {
+    background: @barra_lateral_opciones_fondo;
+    fill: @barra_lateral_opciones_iconos !important;
+    color: @barra_lateral_opciones_texto_hover;
+  }
+
+  .ic-app-header__menu-list-link:hover {
+    background: @barra_lateral_opciones_fondo_hover;
+    fill: @barra_lateral_opciones_iconos_hover !important;
+    color: @barra_lateral_opciones_texto_hover;
+  }
+
+  .menu-item__text:after {
+    border-right-color: @barra_lateral_etiquetas_fondo;
+  }
+
+  .ic-app-header__menu-list-item.ic-app-header__menu-list-item--active .ic-app-header__menu-list-link {
+    background: @barra_lateral_opc_activa_fondo;
+    color: @barra_lateral_opc_activa_texto;
+  }
+
+  #primaryNavToggle {
+    background: @barra_lateral_opciones_fondo;
+  }
+
+  body.primary-nav-expanded .ic-app-header__menu-list-item .menu-item__text {
+    color: @barra_lateral_opciones_texto;
+  }
+
+  body.primary-nav-expanded .ic-app-header__menu-list-item.ic-app-header__menu-list-item--active .menu-item__text {
+    color: @barra_lateral_opc_activa_texto;
+  }
+
+  .menu-item__text {
+    color: @barra_lateral_etiquetas_texto;
+    background: @barra_lateral_etiquetas_fondo;
+  }
+
+  .fLzZc_caGd {
+    background: @barra_lateral_fondo;
+  }
+
+  .correct_answer {
+    background: @cuestionario_pregunta_correcta !important;
+  }
+
+  #left-side {
+    background: @menu_izquierda_fondo;
+  }
+
+  #right-side-wrapper {
+    background: @menu_derecha_fondo;
+  }
+
+  .ic-app-nav-toggle-and-crumbs.no-print {
+    background: @titulo_fondo;
+  }
+
+  .btn,
+  .button-sidebar-wide,
+  .Button--primary,
+  #add_announcement,
+  #show_all_details_button {
+    border: 0;
+    background: @botones_fondo;
+    color: @botones_color;
+    &:hover {
+      background: @botones_fondo_hover;
+      color: @botones_color_hover;
+    }
+  }
+
+  .btn.active {
+    background: @botones_fondo_hover;
+    color: @botones_color_hover;
+  }
+
+  .item-group-condensed .ig-header {
+    background: @titulo_grupo_fondo;
+  }
+
+  #content-wrapper::-webkit-scrollbar {
+    background: @scroll_bar;
+  }
+
+  #content-wrapper::-webkit-scrollbar-thumb {
+    background: @scroll_bar_thumb;
+  }
+
+  .menu-item__text {
+    color: inherit !important;
+  }
+
+  .eHiXd_bNlk.eHiXd_ycrn:not(#add_announcement),
+  .fbyHH_bGBk.fbyHH_bSMN {
+    color: @link_1 !important;
+    font-size: 20px;
+    &:hover {
+      color: @link_1_hover !important;
+    }
+  }
+
+  #create_new_event_link {
+    color: white;
+  }
+
+  .cnWSA_bXiG {
+    background: @notificacion;
+  }
+
+  .ef-item-row.ef-item-selected,
+  .activeDragTarget {
+    background: @selecionado !important;
+  }
+
+  // -------------------
+  //  Formato Adicional
+  // -------------------
+
+  // Reduce la animación de las etiquetas
+  .menu-item__text {
+    //! Reducir la animación causa un pequeño error al minimizar la barra, propio de canvas
+    transition-delay: 0.2s;
+    transform: none;
+  }
+
+  // Permite tener un ancho indefinido
+  .ic-Layout-wrapper {
+    //! Esto puede ser molesto en pantallas muy grandes
+    max-width: 100% !important;
+    margin-right: 1%;
+  }
+
+  // Oculta un botón de fuentes externas en anuncios
+  #external_feed {
+    display: none;
+  }
+
+  // Oculta un tutorial en los cursos
+  .courses-tray .cjUyb_bGBk.cjUyb_ycrn {
+    display: none;
+  }
+
+  // Oculta los semestres en cursos
+  #section-tabs-header-subtitle {
+    display: none !important;
+  }
+  .ic-DashboardCard__header-term {
+    font-size: 0;
+  }
+  .cjUyb_bGBk.cjUyb_dfBC.cjUyb_pEgL.cjUyb_eQnG {
+    display: None !important;
+  }
+
+  // Oculta una barra molesta al ser la pantalla muy chica
+  // TODO: ver si esto es útil
+  .ic-Dashboard-header__layout.small,
+  medium ic-Dashboard-header__layout {
+    display: none;
+  }
+
+  // Oculta los logos adicionales
+  .ic-sidebar-logo,
+  .ic-Layout-watermark {
+    display: none !important;
+  }
+
+  // Oculta el footer
+  #footer {
+    display: none;
+  }
+
+  // Condenas los módulos del curso
+  .item-group-condensed {
+    padding: 0;
+  }
+  .context_module .items {
+    min-height: 0;
+  }
+  .content .footer,
+  .context_module div.footer {
+    padding: 0;
+  }
+  .item-group-container {
+    padding-bottom: 0;
+  }
+
+  // Elimina espacios en el menú de personas
+  #content .ic-Action-header {
+    display: none;
+  }
+  #tab-0 .form-dialog {
+    display: none;
+  }
+
+  // Cartas centradas en el tablero
+  .ic-DashboardCard {
+    margin: 12px 10px;
+  }
+
+  // Tablero de eventos más dénso
+  .planner-day .planner-grouping {
+    margin-top: 0.5em;
+  }
+  .nothingPlannedContent_hppr {
+    margin: 0 10%;
+  }
+
+  // Margen de la derecha
+  #wrapper {
+    margin-right: 0;
+  }
+
+  // Titulo de navegación
+  .ic-app-nav-toggle-and-crumbs {
+    margin: 0;
+    padding: 0 24px;
+    min-height: 60px;
+  }
+
+  // Logo principal
+  .ic-app-header__logomark {
+    height: 60px;
+  }
+
+  // Se destaca la respuesta pregunta en un ensayo
+  .correct_answer {
+    margin: 0 !important;
+    padding: 8px 30px !important;
+  }
+
+  // Elimina un espacio en blanco en los ensayos
+  #quiz_show .description {
+    height: auto !important;
+  }
+
+  // Menu de la izquierda fijo, contenido central scrollable
+  #content-wrapper {
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    // Esto asume que el título de navegación es de 60px
+    //! Esto causa que el menú de las tarjetas se achique
+    height: calc(100vh - 60px);
+  }
+
+  // No se muestra el scrollbar
+  #content-wrapper::-webkit-scrollbar {
+    // Ver https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Scrollbars
+    // Ver https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar
+    //! Firefox no está soportado actualmente
+    width: 10px;
+  }
+  #content-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+  }
+
+  // Tamaño fijo del menú de la izquierda
+  #left-side {
+    height: 100%;
+  }
+
+  // Elimina el fondo del texto de la barra del título
+  #breadcrumbs {
+    background: None;
+  }
+
+  // Elimina el tamaño máximo de la lista de preguntas en un ensayo
+  #question_list {
+    max-height: None !important;
+  }
+
+  /* Elimina el efecto de degradado en los eventos*/
+  #right-side-wrapper .event-details:after {
+    background: None !important;
+  }
+
+  // Elimina el fondo blanco de los contenedores
+  .item-group-container,
+  .header-bar {
+    background: None;
+  }
+
+  // Estira el menu de la derecha para que ocupe todo el espacio vertical
+  #main {
+    display: flex;
+  }
+
+  // Ordena el espacio para exportar contenido
+  .header-bar {
+    border: 0;
+    padding-bottom: 0;
+    padding-top: 12px;
+  }
+
+  .ic-Dashboard-header__layout {
+    min-height: 60px;
+  }
+  .ic-DashboardCard__box {
+    padding: 0;
+  }
+
+  // Arregla la distorción del rectangulo al selecionar un item
+  .icon-mini-arrow-down {
+    top: -1px;
+    position: relative;
+  }
+
+  // Muetsra todos los calendarios en la lista de calendarios
+  #context-list-holder,
+  #undated-events {
+    max-height: none;
+  }
+
+  // Oculta la lista de eventos sin fecha en el cañlendario
+  #undated-events-section {
+    display: none;
+  }
+
+  // Aumenta el tamaño de las pautas de tareas
+  .rubric {
+    max-width: 900px;
+  }
+
+  // TODO
+
+  #doc_preview {
+    height: 100% !important;
+  }
+}
