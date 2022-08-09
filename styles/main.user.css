@@ -2,7 +2,7 @@
 
 @name           fix-canvas
 @namespace      github.com/benjavicente/fix-canvas
-@version        0.1.1
+@version        0.1.2
 @description    Estilo para Canvas de Instructure
 @author         benjavicente
 @homepageURL    https://github.com/benjavicente/fix-canvas
@@ -93,6 +93,10 @@
 
   .ic-DashboardCard__box__container {
     margin: 0;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit,minmax(260px, 1fr));
+    grid-auto-rows: 1fr;
   }
   
   .fLzZc_caGd .navigation-tray-container {
