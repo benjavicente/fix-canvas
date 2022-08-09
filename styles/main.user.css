@@ -91,6 +91,10 @@
     --ic-brand-primary: @notificacion;
   }
 
+  .ic-DashboardCard__box__container {
+    margin: 0;
+  }
+  
   .fLzZc_caGd .navigation-tray-container {
     background: @catalogo_cursos_fondo;
   }
