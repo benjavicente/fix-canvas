@@ -2,7 +2,7 @@
 
 @name           fix-canvas
 @namespace      github.com/benjavicente/fix-canvas
-@version        0.1.2
+@version        0.1.3
 @description    Estilo para Canvas de Instructure
 @author         benjavicente
 @homepageURL    https://github.com/benjavicente/fix-canvas
@@ -95,10 +95,10 @@
     margin: 0;
     display: grid;
     gap: 10px;
-    grid-template-columns: repeat(auto-fit,minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     grid-auto-rows: 1fr;
   }
-  
+
   .fLzZc_caGd .navigation-tray-container {
     background: @catalogo_cursos_fondo;
   }
@@ -199,9 +199,11 @@
   .eHiXd_bNlk.eHiXd_ycrn:not(#add_announcement),
   .fbyHH_bGBk.fbyHH_bSMN {
     color: @link_1 !important;
-    font-size: 20px;
     &:hover {
       color: @link_1_hover !important;
+    }
+    & + div {
+      display: none;
     }
   }
 
@@ -346,7 +348,6 @@
     overflow-x: hidden;
     // Esto asume que el título de navegación es de 60px
     //! Esto causa que el menú de las tarjetas se achique
-    height: calc(100vh - 60px);
   }
 
   // No se muestra el scrollbar
@@ -431,5 +432,9 @@
 
   #doc_preview {
     height: 100% !important;
+  }
+
+  .todo-details::after {
+    display: none;
   }
 }
