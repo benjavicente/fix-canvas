@@ -160,6 +160,9 @@
   .ic-app-nav-toggle-and-crumbs.no-print {
     background: @titulo_fondo;
   }
+  [role="region"]{
+    background: @barra_lateral_logo_fondo;
+  }
 
   .btn,
   .button-sidebar-wide,
